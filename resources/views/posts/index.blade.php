@@ -9,8 +9,10 @@
     <body>
         <h1>protein life</h1>
         <div class='posts'>
+            <a href='/posts/create'>create</a>
             @foreach ($posts as $post)
                 <div class='post'>
+                    <h2 class='title'><a href="/posts/{{ $post->id }}">{{ $post->id }}</a></h2>
                     <h2 class='text'>{{ $post->text }}</h2>
                     <p class='price'>{{ $post->price }}</p>
                 </div>
