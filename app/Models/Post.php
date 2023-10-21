@@ -12,9 +12,12 @@ class post extends Model
         'price',
         'text',
         'review',
+        'image_url',
         ];
-    public function getPaginateByLimit(int $limit_count = 10){
-    return $this->orderBy('updated_at' , 'DESC')->paginate($limit_count);
+    public function getPaginateByLimit(int $limit_count = 10)
+    {
+        return $this->orderBy('updated_at' , 'DESC')->paginate($limit_count);
     }
+    
 }
 
