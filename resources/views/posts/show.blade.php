@@ -9,6 +9,7 @@
     </head>
     <body>
         <h1>protein life</h1>
+        <small>{{ $post->user->name }}</small>
         <div class="content">
             <div class="content__post">
                 <h3>感想</h3>
