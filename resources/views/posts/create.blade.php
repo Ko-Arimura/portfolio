@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>proteinlife</h1>
-        <form action="/posts" method="POST">
+        <form action="/posts" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="price">
                 <h2>購入価格</h2>
@@ -29,7 +29,9 @@
                     <option value="5">5</option>
                 </select>
                 <p class="review_error" style="color:red">{{ $errors->first('post.review') }}</p>
-
+            </div>
+            <div class="image">
+                <input type="file" name="image">
             </div>
             <input type="submit" value="投稿"/>
         </form>

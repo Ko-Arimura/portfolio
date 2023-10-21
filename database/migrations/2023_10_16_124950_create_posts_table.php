@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('text');
             $table->integer('price');
             $table->integer('review');
-            $table->string('image')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
