@@ -4,7 +4,7 @@
             <a href='/posts/create'>create</a>
             @foreach ($posts as $post)
                 <div class='post'>
-                    <small>{{ $post->user->name }}</small>
+                    <a href='/user/{{ $post->user->id}}'>{{ $post->user->name }}<a>
                     @if($post->image_url)
                     <div>
                         <img src="{{ $post->image_url }}" alt="画像が読み込めません。" width="400" height="180"/>
