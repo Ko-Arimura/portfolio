@@ -33,6 +33,22 @@
             <div class="image">
                 <input type="file" name="image">
             </div>
+            <div class="category">
+            <h2>Category</h2>
+            <select name="post[category_id]">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            </div>
+            <div class="product_id->flavor">
+                <h2>フレーバー</h2>
+                <input type="text" name="post[flavor]" placeholder="商品味"/>
+            </div>
+            <div class="product_id->name">
+                <h2>商品名</h2>
+                <input type="text" name="post[name]" placeholder="商品名"/>
+            </div>
             <input type="submit" value="投稿"/>
         </form>
         <div class="footer">

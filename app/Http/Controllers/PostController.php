@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\Product;
 use Cloudinary; 
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -12,22 +14,33 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit(1)]);
     }
     
-    public function create() {
-        return view('posts.create');
+    public function create(Category $category)
+    {
+        return view('posts.create')->with(['categories' => $category->get()]);
     }
     
     public function show(Post $post) {
         return view('posts.show')->with(['post' => $post]);
     }
     
-    public function store(Post $post, PostRequest $request) {
+    public function store(Post $post, Category $category, Product $product, PostRequest $request) {
         $input = $request['post'];
-        $input += ['user_id' => $request->user()->id]; 
-        if($request->file('image')){
-        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        $input += ['image_url' => $image_url];
-        }
-        $post->fill($input)->save();
+        $product->name =$input["name"];
+        $product->category_id =$input["category_id"];
+        $product->flavor =$input["flavor"];
+        $product->save();
+
+
+        $post->text = $input["text"];
+        $post->user_id = Auth::id();
+        $post->image_url =Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $post->product_id =$product->id;
+        $post->review =$input["review"];
+        $post->price = $input["price"];
+        $post->save();
+        
+
+        
         return redirect('/posts/' . $post->id);
     }
     
