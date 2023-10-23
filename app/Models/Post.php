@@ -15,12 +15,18 @@ class post extends Model
     return $this->belongsTo(User::class);
     }
     
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
     protected $fillable = [
         'price',
         'text',
         'review',
         'image_url',
-        'user_id'
+        'user_id',
+        'product_id',
         ];
     public function getPaginateByLimit(int $limit_count = 10)
     {
