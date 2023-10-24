@@ -2,9 +2,13 @@
     <x-slot name="header">ProteinLife</x-slot>
         <div class='posts'>
             <a href='/posts/create'>create</a>
+            {{--@php 
+            dd($posts->posts)
+            @endphp--}}
+            <h1>{{ $category->name }}</h1>
             @foreach ($posts as $post)
                 <div class='post'>
-                    <a href='/user/{{ $post->user->id}}'>{{ $post->user->name }}<a>
+                    <a href='/user/{{ $post->user->id }}'>{{ $post->user->name }}<a>
                     @if($post->image_url)
                     <div>
                         <img src="{{ $post->image_url }}" alt="画像が読み込めません。" width="400" height="180"/>
@@ -21,7 +25,6 @@
 
             @endforeach
         </div>
-        <div class='paginate'>
-            {{ $posts->links() }}
-        </div>
+                    <a href="/">戻る</a>
+
     </x-app-layout>
