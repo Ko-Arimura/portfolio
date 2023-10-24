@@ -14,16 +14,16 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit(1)]);
     }
     
-    public function create(Category $category)
+    public function create(Category $category , Product $product)
     {
-        return view('posts.create')->with(['categories' => $category->get()]);
+        return view('posts.create')->with(['categories' => $category->get()] ,['products' =>$product->get()]);
     }
     
     public function show(Post $post) {
         return view('posts.show')->with(['post' => $post]);
     }
     
-    public function store(Post $post, Category $category, Product $product, PostRequest $request) {
+    public function store(Post $post, Product $product, PostRequest $request) {
         $input = $request['post'];
         $product->name =$input["name"];
         $product->category_id =$input["category_id"];

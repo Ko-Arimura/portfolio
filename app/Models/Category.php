@@ -12,4 +12,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);  
     }
+    public function getByCategory(int $limit_count = 5)
+    {
+        // return $this->products()->with('category')->orderBy('updated_at', 'DESC')->get();
+        return $this->products()->orderBy('updated_at', 'DESC')->get();
+    }
 }

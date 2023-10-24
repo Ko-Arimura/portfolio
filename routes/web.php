@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,7 @@ Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/user/{user}',[UserController::class,'index']);
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store']);
+Route::get('/categories/{category}', [CategoryController::class,'index']);
 Route::get('/posts/{post}', [PostController::class ,'show']);
 Route::get('/dashboard', function () {
     return view('dashboard');

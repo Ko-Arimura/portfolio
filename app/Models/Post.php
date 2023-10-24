@@ -15,9 +15,9 @@ class post extends Model
     return $this->belongsTo(User::class);
     }
     
-    public function category()
+    public function product()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Product::class);
     }
     
     protected $fillable = [
