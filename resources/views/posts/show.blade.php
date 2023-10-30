@@ -1,13 +1,5 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
+<x-app-layout>
+    <x-slot name="header">ProteinLife</x-slot>
         <h1>protein life</h1>
         <small>{{ $post->user->name }}</small>
         <div class="content">
@@ -22,7 +14,7 @@
         </div>
         @endif
         <div class="footer">
+            <div class="edit"><a href="/posts/{{ $post->id }}/edit">編集</a></div>
             <a href="/">戻る</a>
         </div>
-    </body>
-</html>
+    </x-app-layout>
