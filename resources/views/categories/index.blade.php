@@ -15,6 +15,7 @@
                     </div>
                     @endif
                     <h2 class='title'><a href="/posts/{{ $post->id }}">{{ $post->id }}</a></h2>
+                    
                     <h2 class='text'>{{ $post->text }}</h2>
                     <p class='price'>{{ $post->price }}</p>
                     <p class='product'>{{ $post->product->name }}</p>

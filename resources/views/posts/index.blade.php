@@ -10,11 +10,17 @@
                         <img src="{{ $post->image_url }}" alt="画像が読み込めません。" width="400" height="180"/>
                     </div>
                     @endif
+                    
                     <h2 class='title'><a href="/posts/{{ $post->id }}">{{ $post->id }}</a></h2>
+                    <h2>感想</h2>
                     <h2 class='text'>{{ $post->text }}</h2>
+                    <h2>購入価格</h2>
                     <p class='price'>{{ $post->price }}</p>
+                    <h2>商品名</h2>
                     <p class='product'>{{ $post->product->name }}</p>
+                    <h2>フレーバー</h2>
                     <p class='flavor'>{{ $post->product->flavor }}</p>
+                    <h2>カテゴリー</h2>
                     <a href="/categories/{{ $post->product->category->id }}">{{ $post->product->category->name }}</a>
                     
                 </div>

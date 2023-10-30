@@ -4,17 +4,17 @@
             @csrf
             <div class="price">
                 <h2>購入価格</h2>
-                <input type="text" name="post[price]" placeholder="商品の購入価格"/>
+                <input type="text" name="post[price]" value="{{ $post->price }}"/>
                 <p class="price_error" style="color:red">{{ $errors->first('post.price') }}</p>
             </div>
             <div class="text">
                 <h2>感想</h2>
-                <textarea name="post[text]" placeholder="商品の感想を記入してください"></textarea>
+                <textarea name="post[text]" value="{{ $post->text}}">{{ $post->text}}</textarea>
                 <p class="text_error" style="color:red">{{ $errors->first('post.text') }}</p>
             </div>
              <div class="review">
                 <h2>レビュー</h2>
-                <select name="post[review]">
+                <select name="post[review]" >
                     <option value="">-選択してください-</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -37,13 +37,13 @@
             </div>
             <div class="product_id->flavor">
                 <h2>フレーバー</h2>
-                <input type="text" name="post[flavor]" placeholder="商品味"/>
+                <input type="text" name="post[flavor]" value="{{ $post->product->flavor }}"/>
             </div>
             <div class="product_id->name">
                 <h2>商品名</h2>
-                <input type="text" name="post[name]" placeholder="商品名"/>
+                <input type="text" name="post[name]" value="{{ $post->product->name }}"/>
             </div>
-            <input type="submit" value="投稿"/>
+            <input type="submit" value="更新"/>
         </form>
         <div class="footer">
             <a href="/">戻る</a>

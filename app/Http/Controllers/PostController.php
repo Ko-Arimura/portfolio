@@ -19,11 +19,37 @@ class PostController extends Controller
         return view('posts.create')->with(['categories' => $category->get()] ,['products' =>$product->get()]);
     }
     
+        public function edit(Post $post , Category $category )
+    {
+        return view('posts.edit')->with(['categories' => $category->get() ,  'post' => $post]);
+    }
+    
     public function show(Post $post) {
         return view('posts.show')->with(['post' => $post]);
     }
     
     public function store(Post $post, Product $product, PostRequest $request) {
+        $input = $request['post'];
+        $product->name =$input["name"];
+        $product->category_id =$input["category_id"];
+        $product->flavor =$input["flavor"];
+        $product->save();
+
+
+        $post->text = $input["text"];
+        $post->user_id = Auth::id();
+        $post->image_url =Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $post->product_id =$product->id;
+        $post->review =$input["review"];
+        $post->price = $input["price"];
+        $post->save();
+        
+
+        
+        return redirect('/posts/' . $post->id);
+    }
+    
+        public function update(Post $post, Product $product, PostRequest $request) {
         $input = $request['post'];
         $product->name =$input["name"];
         $product->category_id =$input["category_id"];
