@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('review');
             $table->string('image_url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

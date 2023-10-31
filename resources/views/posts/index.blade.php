@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">ProteinLife</x-slot>
+    <div class="sale"><a href="/sales">セール情報はこちらから</a></div>
         <div class='posts'>
             <a href='/posts/create'>create</a>
             @foreach ($posts as $post)
@@ -22,9 +23,8 @@
                     <p class='flavor'>{{ $post->product->flavor }}</p>
                     <h2>カテゴリー</h2>
                     <a href="/categories/{{ $post->product->category->id }}">{{ $post->product->category->name }}</a>
-                    
+                    <div class="edit"><a href="/posts/{{ $post->id }}/edit">編集</a></div>
                 </div>
-
             @endforeach
         </div>
         <div class='paginate'>
