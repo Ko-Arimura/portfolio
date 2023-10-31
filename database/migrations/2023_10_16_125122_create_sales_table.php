@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('titile')->nullable();
             $table->string('image')->nullable();
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->integer('price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

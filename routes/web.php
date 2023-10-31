@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController; 
+use App\Http\Controllers\SaleController;  
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +25,13 @@ Route::get('/user/{user}',[UserController::class,'index']);
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
+Route::delete('/posts/{post}', [PostController::class,'delete']);
 Route::post('/posts', [PostController::class, 'store']);
 Route::get('/categories/{category}', [CategoryController::class,'index']);
 Route::get('/posts/{post}', [PostController::class ,'show']);
+
+Route::get('/sales', [SaleController::class, 'index']);   
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

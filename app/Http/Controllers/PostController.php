@@ -14,9 +14,9 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit(1)]);
     }
     
-    public function create(Category $category , Product $product)
+    public function create(Category $category , Product $product , Post $post)
     {
-        return view('posts.create')->with(['categories' => $category->get()] ,['products' =>$product->get()]);
+        return view('posts.create')->with(['categories' => $category->get() ,'products' =>$product->get()]);
     }
     
         public function edit(Post $post , Category $category )
@@ -28,6 +28,12 @@ class PostController extends Controller
         return view('posts.show')->with(['post' => $post]);
     }
     
+    public function delete(Post $post )
+    {
+    $post->delete();
+    return redirect('/');
+
+    }
     public function store(Post $post, Product $product, PostRequest $request) {
         $input = $request['post'];
         $product->name =$input["name"];
