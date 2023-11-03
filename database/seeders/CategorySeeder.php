@@ -21,7 +21,7 @@ class CategorySeeder extends Seeder
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'WPc',
+                'name' => 'WPC',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
