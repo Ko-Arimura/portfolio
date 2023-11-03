@@ -1,16 +1,15 @@
 <x-app-layout>
     <x-slot name="header">ProteinLife</x-slot>
         <h1>proteinlife</h1>
-        <a href='/sales/create'>投稿する</a>
         <div class='sales'>
-            @foreach ($sales as $sale)
+            
                 <div class='sale'>
                     <h2 class='title'>{{ $sale->title }}</h2>
-                    <p class='price'>{{ $sale->proce }}</p>
+                    <p class='price'>{{ $sale->price }}</p>
                 </div>
-            @endforeach
+                <div>
+                    <img src="{{ $sale->image_url }}" alt="画像が読み込めません。"/>
+                </div>
         </div>
-        <div class='paginate'>
-            {{ $sales->links() }}
-        </div>
+        <a href="/">戻る</a>
 </x-app-layout>

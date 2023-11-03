@@ -30,8 +30,10 @@ Route::post('/posts', [PostController::class, 'store']);
 Route::get('/categories/{category}', [CategoryController::class,'index']);
 Route::get('/posts/{post}', [PostController::class ,'show']);
 
-Route::get('/sales', [SaleController::class, 'index']);   
-
+Route::get('/sales', [SaleController::class, 'index']);
+Route::get('/sales/create', [SaleController::class, 'create']);
+Route::post('/sales', [SaleController::class, 'store']);
+Route::get('/sales/{sale}', [SaleController::class ,'show']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
