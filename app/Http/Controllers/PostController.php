@@ -44,7 +44,7 @@ class PostController extends Controller
 
         $post->text = $input["text"];
         $post->user_id = Auth::id();
-        if(!empty($post->$image_url)){
+        if(!empty($post->image_url)){
         $post->image_url =Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         }
         $post->product_id =$product->id;
