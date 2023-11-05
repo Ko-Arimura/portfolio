@@ -13,8 +13,17 @@
              <div class="image">
                 <input type="file" name="image">
             </div>
-            <input type="submit" value="投稿"/>
+            <div class="category">
+                <h2>Category</h2>
+                <select name="sale[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                </div>
+                <input type="submit" value="投稿"/>
         </form>
+        
         <div class="footer">
             <a href="/">戻る</a>
         </div>
