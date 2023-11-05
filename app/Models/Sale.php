@@ -19,14 +19,15 @@ public function getPaginateByLimit(int $limit_count = 10)
 {
     return $this::with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
 }
-public function show(sale $sale)
-{
-    return view('sales.show')->with(['sale' => $sale->getPaginateByLimit(1)]);
-
-}
 
 public function user()
 {
     return $this->belongsTo(User::class);
 }
+
+public function product()
+{
+    return $this->belongsTo(Product::class);
+}
+
 }
