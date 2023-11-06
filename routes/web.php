@@ -34,6 +34,9 @@ Route::get('/sales', [SaleController::class, 'index']);
 Route::get('/sales/create', [SaleController::class, 'create']);
 Route::post('/sales', [SaleController::class, 'store']);
 Route::get('/sales/{sale}', [SaleController::class ,'show']);
+Route::get('/sales/{sale}/edit', [SaleController::class, 'edit']);
+Route::put('/sales/{sale}', [SaleController::class, 'update']);
+Route::delete('/sales/{sale}', [SaleController::class,'delete']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
