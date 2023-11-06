@@ -8,9 +8,16 @@
                     <h2 class='title'>{{ $sale->title }}</h2>
                     <p class='price'>{{ $sale->proce }}</p>
                 </div>
+                 <h2>商品名</h2>
+                 <p class='product'>{{ $sale->product->name }}</p>
+                 <h2>フレーバー</h2>
+                <p class='flavor'>{{ $sale->product->flavor }}</p>
+                <h2>カテゴリー</h2>
             @endforeach
+            <div class="edit"><a href="/sales/{{ $sale->id }}/edit">編集</a></div>
         </div>
         <div class='paginate'>
             {{ $sales->links() }}
         </div>
+        <a href="/">ホームへ戻る</a>
 </x-app-layout>
