@@ -24,12 +24,15 @@ Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/user/{user}',[UserController::class,'index']);
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
-Route::put('/posts/{post}', [PostController::class, 'update']);
-Route::delete('/posts/{post}', [PostController::class,'delete']);
-Route::post('/posts', [PostController::class, 'store']);
+Route::put('/posts/{post}', [PostController::class , 'update']);
+Route::delete('/posts/{post}', [PostController::class , 'delete']);
+Route::post('/posts', [PostController::class , 'store']);
+Route::get('/posts/{post}', [PostController::class , 'show']);
+// いいね機能
+Route::get('/posts/unlike/{id}', [PostController::class , 'unlike'])->name('post.unlike');
+Route::get('/posts/like/{id}', [PostController::class , 'like'])->name('post.like');
 Route::get('/categories/{category}', [CategoryController::class,'index']);
-Route::get('/posts/{post}', [PostController::class ,'show']);
-
+// セール情報
 Route::get('/sales', [SaleController::class, 'index']);
 Route::get('/sales/create', [SaleController::class, 'create']);
 Route::post('/sales', [SaleController::class, 'store']);

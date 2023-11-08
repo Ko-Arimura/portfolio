@@ -18,9 +18,14 @@ class User extends Authenticatable
     {
     return $this->hasMany(Sale::class);  
     }
+    
     public function posts()
     {
     return $this->hasMany(Post::class);
+    }
+    public function likes()
+    {
+    return $this->hasMany(Like::class);
     }
     
     public function getOwnPaginateByLimit(int $limit_count = 5)
