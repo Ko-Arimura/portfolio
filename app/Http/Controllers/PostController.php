@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\Like;
 use App\Models\Product;
 use Cloudinary; 
 use App\Models\Category;
@@ -78,4 +79,30 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
     
+    
+    // いいね機能
+    
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
+    }
+    
+    public function like($id)
+    {
+        Like::create([
+            'post_id' => $id,
+            'user_id' => Auth::id(),
+            ]);
+            session()->flash('success', 'You Liked the Reply.');
+            return redirect()->back();
+        
+    }
+    public function unlike($id)
+    {
+        $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+        $like->delete();
+        session()->flash('success', 'You Unliked the Reply.');
+        return redirect()->back();
+        
+    }
 }
