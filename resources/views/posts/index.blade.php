@@ -1,5 +1,11 @@
 <x-app-layout>
     <x-slot name="header">ProteinLife</x-slot>
+    <div>
+        <form action="{{ route ('index') }}" method="GET">
+            <input type="text" name="keyword" value="{{ $keyword }}">
+            <input type="submit" value="検索">
+        </form>
+    </div>
     <div class="sale"><a href="/sales">セール情報はこちらから</a></div>
         <div class='posts'>
             <a href='/posts/create'>create</a>
@@ -35,7 +41,7 @@
             @endforeach
         </div>
         <div class='paginate'>
-            {{ $posts->links() }}
+        {{ $posts -> links()}}
         </div>
 
     </x-app-layout>
