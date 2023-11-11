@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
@@ -11,9 +12,43 @@ use App\Models\Category;
 
 class PostController extends Controller
 {
-    public function index(Post $post) {
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit(1)]);
+    public function index(Request $request) {
+        $keyword = $request->input('keyword');
+
+        $query = Post::query();
+        
+        if(!empty($keyword)) {
+          
+            $query = Post::where('text', 'LIKE', "%{$keyword}%")
+                  ->orWhereHas('product', function ($query) use ($keyword) {
+                $query->where('flavor', 'like', "%{$keyword}%")
+                ->orwhere('name', 'like', "%{$keyword}%");
+            });
+        }
+        
+
+       	$posts = $query->paginate(2);
+        return view('posts.index', compact('keyword','posts'));
     }
+//     public function index(Request $request) {
+//         $keyword = $request->input('keyword');
+//         $posts = Post::query()->get();
+        
+//         if(!empty($keyword)) {
+          
+//             $posts = Post::where('text', 'LIKE', "%{$keyword}%")
+//                 // ->orWhere('flavor', 'LIKE', "%{$keyword}%")
+//                 // ->orWhere('name', 'LIKE', "%{$keyword}%");
+//                   ->orWhereHas('product', function ($query) use ($keyword) {
+//                 $query->where('flavor', 'like', "%{$keyword}%");
+// // 		->orwhere('name', 'like', "%{$keyword}%");
+//             })->paginate(10);
+//         }
+//         $posts->appends(['keyword' => $keyword])->links();
+
+//         // $posts = $query->get();
+//         return view('posts.index', compact('keyword','posts'));
+//     }
     
     public function create(Category $category , Product $product , Post $post)
     {
