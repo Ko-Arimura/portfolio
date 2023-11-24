@@ -13,6 +13,7 @@ use App\Models\Category;
 class PostController extends Controller
 {
     public function index(Request $request) {
+        $user_id = Auth::id();
         $keyword = $request->input('keyword');
 
         $query = Post::query();
@@ -27,28 +28,9 @@ class PostController extends Controller
         }
         
 
-       	$posts = $query->paginate(2);
-        return view('posts.index', compact('keyword','posts'));
+       	$posts = $query->orderBy('updated_at', 'DESC')->paginate(2);
+        return view('posts.index', compact('keyword','posts' , 'user_id'));
     }
-//     public function index(Request $request) {
-//         $keyword = $request->input('keyword');
-//         $posts = Post::query()->get();
-        
-//         if(!empty($keyword)) {
-          
-//             $posts = Post::where('text', 'LIKE', "%{$keyword}%")
-//                 // ->orWhere('flavor', 'LIKE', "%{$keyword}%")
-//                 // ->orWhere('name', 'LIKE', "%{$keyword}%");
-//                   ->orWhereHas('product', function ($query) use ($keyword) {
-//                 $query->where('flavor', 'like', "%{$keyword}%");
-// // 		->orwhere('name', 'like', "%{$keyword}%");
-//             })->paginate(10);
-//         }
-//         $posts->appends(['keyword' => $keyword])->links();
-
-//         // $posts = $query->get();
-//         return view('posts.index', compact('keyword','posts'));
-//     }
     
     public function create(Category $category , Product $product , Post $post)
     {
