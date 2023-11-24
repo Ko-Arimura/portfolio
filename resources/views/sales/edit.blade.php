@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">ProteinLife</x-slot>
+    <article class=article>
         <form action="/sales" method="POST" enctype="multipart/form-data">
             @csrf
             <h3>セール情報編集</h3>
@@ -40,6 +41,7 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        </article>
         <script>
         function deletePost(id) {
             'use strict'
@@ -50,4 +52,5 @@
             
         }
         </script>
+        
 </x-app-layout>
