@@ -4,7 +4,12 @@
 }
 .productreview {
     display: flex;
+    margin-left: 30px;
 }
+.right {
+    text-align: right
+}
+/*検索*/
 .sumit {
     display: flex;
     justify-content: center;
@@ -41,4 +46,60 @@
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23fff%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
     background-repeat: no-repeat;
     content: '';
+}
+
+/* ページ */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-item {
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /*width: 45px;*/
+    /*height: 45px;*/
+    background: #fff;
+    border: solid 2px #2589d0;
+    font-size: 14px;
+    color: #2589d0;
+    font-weight: bold;
+    transition: all 0.15s linear;
+}
+.page-item.isActive {
+    background: #2589d0;
+    color: #fff;
+    pointer-events: none;
+}
+.page-item:not(.isActive):hover {
+  background: #2589d0;
+  color: #fff;
+}
+/*トップボタン*/
+.pagetop {
+  cursor: pointer;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: .3s;
+  color:  #2589d0;
+  background: #fff;
+  
+/*   デフォルト */
+  opacity: 0;
+}
+.pagetop:hover {
+    box-shadow: 0 0 10px #00A6C4;
+}
+.space {
+  height: 5000px;
 }

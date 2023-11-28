@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Like;
@@ -28,7 +29,7 @@ class PostController extends Controller
         }
         
 
-       	$posts = $query->orderBy('updated_at', 'DESC')->paginate(2);
+       	$posts = $query->orderBy('updated_at', 'DESC')->paginate(10);
         return view('posts.index', compact('keyword','posts' , 'user_id'));
     }
     
