@@ -29,7 +29,7 @@ class PostController extends Controller
         }
         
 
-       	$posts = $query->orderBy('updated_at', 'DESC')->paginate(10);
+       	$posts = $query->orderBy('updated_at', 'DESC')->paginate(5);
         return view('posts.index', compact('keyword','posts' , 'user_id'));
     }
     
