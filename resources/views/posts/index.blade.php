@@ -1,7 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">ProteinLife</x-slot>
-    <article class=article>
-    <div class=sumit>
+        <div class=sumit>
         <form  action="{{ route ('index') }}" method="GET" class="search-form-006">
             <label>
             <input type="text" name="keyword" value="{{ $keyword }}">
@@ -9,19 +7,24 @@
             <button type="submit" aria-label="検索">
         </form>
     </div>
-    <div class="sale"><a href="/sales">セール情報はこちらから</a></div>
-    <a href='/posts/create'>投稿する</a>
+ 
+    <article class=article>
+
+    <a class="create" href='/posts/create'>投稿する</a>
+    
         <div class='posts'>
             
             
             @foreach ($posts as $post)
                 <div class='post'>
                     
-                    <a href='/user/{{ $post->user->id}}'>投稿者&nbsp;{{ $post->user->name }}</a>
+                    <a class='user' href='/user/{{ $post->user->id}}'>投稿者&nbsp;{{ $post->user->name }}</a>
                         <div class="productreview"><a href="/categories/{{ $post->product->category->id }}">カテゴリー&nbsp;{{ $post->product->category->name }}</a>
                         <div><p class='price'>価格&nbsp;{{ $post->price }} 円</p></div>
+                        <div class="flex">
                         <div><p class='product'>商品&nbsp;{{ $post->product->name }}</p></div>&nbsp;
                         <div><p class='flavor'>{{ $post->product->flavor }}</p></div>
+                        </div>
                         <div><p class'review'>⭐&nbsp;{{ $post->review}}</p></div>
                     </div>
                     <div class="productreview"><h2 class='text'>{{ $post->text }}</h2></div>
@@ -49,6 +52,7 @@
         <div class='paginate'>
         {{ $posts -> links()}}
         </div>
+           <div class="sale"><a href="/sales">セール情報はこちらから→</a></div>
         <div class="pagetop">Top</div>
       </article>
       <script>

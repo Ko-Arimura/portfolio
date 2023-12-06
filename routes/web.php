@@ -33,7 +33,7 @@ Route::get('/posts/unlike/{id}', [PostController::class , 'unlike'])->name('post
 Route::get('/posts/like/{id}', [PostController::class , 'like'])->name('post.like');
 Route::get('/categories/{category}', [CategoryController::class,'index']);
 // セール情報
-Route::get('/sales', [SaleController::class, 'index']);
+Route::get('/sales', [SaleController::class, 'index'])->name('sales');
 Route::get('/sales/create', [SaleController::class, 'create']);
 Route::post('/sales', [SaleController::class, 'store']);
 Route::get('/sales/{sale}', [SaleController::class ,'show']);
