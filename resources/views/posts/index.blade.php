@@ -8,21 +8,33 @@
         </form>
     </div>
  
+    <div class="h1">
+        <h1　class="h1">種類から探す</h1></h1>
+    </div>
+    <div class="catelog">
+    @foreach($categories as $category)
+        <a class='ctg' href="/categories/{{ $category->id }}">{{ $category->name }}</a>
+    @endforeach
+    </div>
+    <div class="sale"><a class="sales" href="/sales">セール情報はこちらから→</a></div>
     <article class=article>
-
-    <a class="create" href='/posts/create'>投稿する</a>
-    
+        <div class="h1">
+        <h1　class="h1">口コミ</h1>
+        </div>
+        
+        <a class="create" href='/posts/create'>投稿する</a>
         <div class='posts'>
             
-            
             @foreach ($posts as $post)
+
                 <div class='post'>
+
                     
-                    <a class='user' href='/user/{{ $post->user->id}}'>投稿者&nbsp;{{ $post->user->name }}</a>
-                        <div class="productreview"><a href="/categories/{{ $post->product->category->id }}">カテゴリー&nbsp;{{ $post->product->category->name }}</a>
-                        <div><p class='price'>価格&nbsp;{{ $post->price }} 円</p></div>
+                    <a class='user' href='/user/{{ $post->user->id}}'>投稿者&emsp;{{ $post->user->name }}</a>
+                        <div class="productreview"><a href="/categories/{{ $post->product->category->id }}">カテゴリー&emsp;{{ $post->product->category->name }}</a>
+                        <div><p class='price'>価格&emsp;{{ $post->price }} 円</p></div>
                         <div class="flex">
-                        <div><p class='product'>商品&nbsp;{{ $post->product->name }}</p></div>&nbsp;
+                        <div><p class='product'>商品&emsp;{{ $post->product->name }}</p></div>&nbsp;
                         <div><p class='flavor'>{{ $post->product->flavor }}</p></div>
                         </div>
                         <div><p class'review'>⭐&nbsp;{{ $post->review}}</p></div>
@@ -35,13 +47,13 @@
                         <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
                         @endif
                     </div>
-                    
-                </div>
-                 @if($post->image_url)
+                    @if($post->image_url)
                     <div>
-                        <img src="{{ $post->image_url }}" alt="画像が読み込めません。" width="400" height="180"/>
+                        <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
                     </div>
                     @endif
+                    
+                </div>
 
 　　　　　　　　
 　　　　　　　　@if ($user_id == $post->user_id)
@@ -52,7 +64,6 @@
         <div class='paginate'>
         {{ $posts -> links()}}
         </div>
-           <div class="sale"><a href="/sales">セール情報はこちらから→</a></div>
         <div class="pagetop">Top</div>
       </article>
       <script>

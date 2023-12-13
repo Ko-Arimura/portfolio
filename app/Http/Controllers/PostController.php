@@ -13,7 +13,7 @@ use App\Models\Category;
 
 class PostController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request, Category $category) {
         $user_id = Auth::id();
         $keyword = $request->input('keyword');
 
@@ -28,9 +28,9 @@ class PostController extends Controller
             });
         }
         
-
+        $categories = $category->get();
        	$posts = $query->orderBy('updated_at', 'DESC')->paginate(5);
-        return view('posts.index', compact('keyword','posts' , 'user_id'));
+        return view('posts.index', compact('keyword','posts' , 'user_id','categories'));
     }
     
     public function create(Category $category , Product $product , Post $post)
@@ -63,8 +63,8 @@ class PostController extends Controller
 
         $post->text = $input["text"];
         $post->user_id = Auth::id();
-        if(!empty($post->image_url)){
-        $post->image_url =Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        if($request->file('image')){ 
+            $post->image_url =Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         }
         $post->product_id =$product->id;
         $post->review =$input["review"];

@@ -1,5 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">ProteinLife</x-slot>
         <h1>protein life</h1>
         <small>{{ $post->user->name }}</small>
         <div class="content">
@@ -15,6 +14,6 @@
         @endif
         <div class="footer">
             <div class="edit"><a href="/posts/{{ $post->id }}/edit">編集</a></div>
-            <a href="/">戻る</a>
+            <a href="/" class="create">戻る</a>
         </div>
     </x-app-layout>

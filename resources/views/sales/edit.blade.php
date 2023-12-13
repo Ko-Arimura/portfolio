@@ -33,13 +33,13 @@
                 </div>
                 <input type="submit" value="投稿"/>
         </form>
-        <form action="/sales/{{ $sale->id }}" id="form_{{ $sale->id }}" method="sale">
+        <form action="/sales/{{ $sale->id }}" id="form_{{ $sale->id }}" method="post">
             @csrf
             @method('DELETE')
             <button type="button" onclick="deletePost({{ $sale->id }})">削除</button> 
         </form>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/sales">戻る</a>
         </div>
         </article>
         <script>

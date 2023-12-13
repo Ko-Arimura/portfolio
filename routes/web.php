@@ -20,6 +20,7 @@ use App\Http\Controllers\SaleController;
 // Route::get('/', function () {
     // return view('welcome');
 // });
+
 Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/user/{user}',[UserController::class,'index']);
 Route::get('/posts/create', [PostController::class, 'create']);
